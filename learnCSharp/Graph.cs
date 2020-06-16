@@ -74,6 +74,29 @@ namespace learnCSharp
                 }
             }
         }
+        public void Breadthfirst()
+        {
+            var queue = new Queue<GraphNode<T>>();
+            var visited = new List<GraphNode<T>>();
+            queue.Enqueue(this);
+            while (queue.Count > 0)
+            {
+                var node = queue.Dequeue();
+                if (!visited.Contains(node))
+                {
+                    visited.Add(node);
+                    Console.Out.WriteLine(node.Data);
+                }
+                foreach(var edge in node.Edges)
+                {
+                    var newNode = edge.OtherNode(node);
+                    if (!visited.Contains(newNode))
+                    {
+                        queue.Enqueue(newNode);
+                    }
+                }
+            }
+        }
 
         public void RecursiveDepthFirst(List<GraphNode<T>> visited = null)
         {
