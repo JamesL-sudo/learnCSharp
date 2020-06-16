@@ -14,6 +14,7 @@ namespace learnCSharp
         public GraphNode(T data)
         {
             this.Data = data;
+            this.Edges = new List<GraphEdge<T>>();
         }
 
         /// <summary>
@@ -52,7 +53,6 @@ namespace learnCSharp
             Edges.Add(new GraphEdge<T>(this, otherNode, 0));
         }
 
-        
     }
 
     class GraphEdge<T>
