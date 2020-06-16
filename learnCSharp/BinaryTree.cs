@@ -39,12 +39,13 @@ public class BinaryTree<T> where T : IComparable
             try
             {
                 this.right.Add(data);
-            } catch (NullReferenceException e)
+            }
+            catch (NullReferenceException e)
             {
                 this.right = new BinaryTree<T>(data);
             }
-        }
-        else 
+        } 
+        else
         {
             try
             {
@@ -113,27 +114,26 @@ public class BinaryTree<T> where T : IComparable
         {
             return true;
         }
+
         if (data.CompareTo(this.data) > 0)
         {
             try
             {
                 return this.right.Exists(data);
             }
-            catch (NullReferenceException e)
-            {
-                return false;
-            }
-        }
-        else
-        {
-            try
-            {
-                return this.left.Exists(data);
-            } catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 return false;
             }
         }
 
+        try
+        {
+            return this.left.Exists(data);
+        }
+        catch (NullReferenceException)
+        {
+            return false;
+        }
     }
 }
